@@ -4,13 +4,13 @@ var imageSmile = "img/smiley-face.jpeg"
 var boxesArray = [
 	{
 		box: "box1",
-		position: true,
+		position: false,
 		image: null,
 		boxSelect: "imageBox1"
 	},
 	{
 		box: "box2",
-		position: false,
+		position: true,
 		image: null,
 		boxSelect: "imageBox2"
 	},
@@ -52,6 +52,18 @@ function moveRight() {
 			boxesArray[i].position = false;
 			boxesArray[i + 1].position = true;
 			document.getElementById(boxesArray[i + 1].boxSelect).src = imageSmile;
+			document.getElementById(boxesArray[i].boxSelect).src = null;
+			return
+		}
+	}
+}
+
+function moveLeft() {
+	for (i = 0; i < boxesArray.length; i++) {
+		if (boxesArray[i].position === true) {
+			boxesArray[i].position = false;
+			boxesArray[i - 1].position = true;
+			document.getElementById(boxesArray[i - 1].boxSelect).src = imageSmile;
 			document.getElementById(boxesArray[i].boxSelect).src = null;
 			return
 		}
