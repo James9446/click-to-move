@@ -1,6 +1,7 @@
-// This is an array of objects for storing information about the boxes
+// This variable is for storing a smiley face image
 var imageSmile = "img/smiley-face.jpeg"
 
+// This is an array of objects for storing information about the boxes
 var boxesArray = [
 	{
 		box: "box1",
@@ -25,169 +26,85 @@ var boxesArray = [
 		position: false,
 		image: null,
 		boxSelect: "imageBox4"
+	},
+	{
+		box: "box5",
+		position: false,
+		image: null,
+		boxSelect: "imageBox5"
+	},
+	{
+		box: "box6",
+		position: false,
+		image: null,
+		boxSelect: "imageBox6"
+	},
+	{
+		box: "box7",
+		position: false,
+		image: null,
+		boxSelect: "imageBox7"
+	},
+	{
+		box: "box8",
+		position: false,
+		image: null,
+		boxSelect: "imageBox8"
 	}
 ];
 
-// for (i = 0; i < boxesArray.length; i++) {
-// 	if (boxesArray[i].position === true) {
-// 		document.getElementById(boxesArray[i].boxSelect).src = boxesArray[i].image;
-// 	}
-// }
-
+// This function reveals an image for user to start moving around
 function start() {
-	// var userInput = document.getElementById("userInput").value;
 	for (i = 0; i < boxesArray.length; i++) {
-		if (boxesArray[i].position === false) {
-			boxesArray[i].image = null;
-		} else if (boxesArray[i].position === true) {
+		// This condition is checking the boxArray for any objects with position set to true
+		if (boxesArray[i].position === true) {
+			// When it finds an object with position set to true it puts an image in the corresponding box
 			document.getElementById(boxesArray[i].boxSelect).src = imageSmile;
-		return
+			return
 		}
 	}
 }
 
+// This function moves the image to the right
 function moveRight() {
+	// It loops through boxArray looking for the box with position true i.e. box with an image
 	for (i = 0; i < boxesArray.length; i++) {
-		if (boxesArray[i].position === true && boxesArray[i].box !== "box4") {
+		// When it finds an image and it's not the bottom box all the way right
+		if (boxesArray[i].position === true && boxesArray[i].box !== "box8") {
+			// It sets the current object's position to false so the next loop won't place an image there
 			boxesArray[i].position = false;
+			// Then it sets the next object's position to true
 			boxesArray[i + 1].position = true;
+			// Then it changes the value in the next object's image: property to give it an image
 			document.getElementById(boxesArray[i + 1].boxSelect).src = imageSmile;
+			// Then it changes the value to null in the current object's image property to remove the image
 			document.getElementById(boxesArray[i].boxSelect).src = null;
+			// Return prevents this process from repeating. Otherwise the image will keep moving right
 			return
 		}
 	}
 }
 
+// This function moves the image to the left
 function moveLeft() {
+	// It loops through boxArray looking for the box with position true i.e. box with an image
 	for (i = 0; i < boxesArray.length; i++) {
+		// When it finds an image and it's not the top box all the way left
 		if (boxesArray[i].position === true && boxesArray[i].box !== "box1") {
+			// It sets the current object's position to false so the next loop won't place an image there
 			boxesArray[i].position = false;
+			// Then it sets the previous object's position to true
 			boxesArray[i - 1].position = true;
+			// Then it changes the value in the previous object's image: property to give it an image
 			document.getElementById(boxesArray[i - 1].boxSelect).src = imageSmile;
+			// Then it changes the value to null in the current object's image property to remove the image
 			document.getElementById(boxesArray[i].boxSelect).src = null;
+			// Return prevents this process from repeating. Otherwise the image will keep moving left
 			return
 		}
 	}
 }
 
-
-// else if (boxesArray[i].position === true) {
-// 			document.getElementById(boxesArray[i].boxSelect).src = boxesArray[i].image;
-// 			boxesArray[i + 1].position = true;
-// 			boxesArray[i].position = false;
-// 		return
-
-
-// function moveRight() {
-	// var userInput = document.getElementById("userInput").value;
-// 	for (i = 0; i < boxesArray.length; i++) {
-// 	if (boxesArray[i].position === true) {
-// 		document.getElementById(boxesArray[i].boxSelect).src = boxesArray[i].image;
-// 		for (i = 0; i < boxesArray.length; i++) {
-// 			if (boxesArray[i].position === false)
-				
-// 			document.getElementById(boxesArray[i + 1].boxSelect).src = boxesArray[i].image;
-// 			return
-// 		}
-// 	}
-// }
-// }
-
-// function checkGuess() {
-//     var userInput = document.getElementById("userInput").value;
-//     if (userInput === answer && boxesArray[0].correct === true) {
-//     	document.getElementById("imageBox1").src = boxesArray[0].image;
-//     	document.getElementById("textBox1").textContent = boxesArray[0].text;
-//     } else if (userInput === answer && boxesArray[1].correct === true) {
-//     	document.getElementById("imageBox2").src = boxesArray[1].image;
-//     	document.getElementById("textBox2").textContent = boxesArray[1].text;
-//     } else if (userInput === answer && boxesArray[2].correct === true) {
-//     	document.getElementById("imageBox3").src = boxesArray[2].image;
-//     	document.getElementById("textBox3").textContent = boxesArray[2].text;
-//     } else if (userInput === answer && boxesArray[3].correct === true) {
-//     	document.getElementById("imageBox4").src = boxesArray[3].image;
-//     	document.getElementById("textBox4").textContent = boxesArray[3].text;
-//     } else {
-//     	document.getElementById("imageBox1").src = boxesArray[0].imageWrong;
-//     	document.getElementById("imageBox2").src = boxesArray[1].imageWrong;
-//     	document.getElementById("imageBox3").src = boxesArray[2].imageWrong;
-//     	document.getElementById("imageBox4").src = boxesArray[3].imageWrong;
-//     	document.getElementById("textBox1").textContent = boxesArray[0].textWrong;
-//     	document.getElementById("textBox2").textContent = boxesArray[1].textWrong;
-//     	document.getElementById("textBox3").textContent = boxesArray[2].textWrong;
-//     	document.getElementById("textBox4").textContent = boxesArray[3].textWrong;
-//     }
-// }
-
-
-
-
-
-
-
-// This variable for storing a randomly generated whole number
-// Current number range between 1 - 2 
-
-// var randonNumber = Math.floor(Math.random() * 4) + 1;
-
-
-//Test purpose console.log
-
-// console.log("The answer is box" + randonNumber);
-
-// This variable is for storing the answer a user must type
-
-// var answer;
-
-// This conditional is for assigning the random number to a box
-// and it assigns a value for the answer variable
-// if (randonNumber === 1) {
-// 	boxesArray[0].correct = true
-// 	answer = "box1"
-// } else if (randonNumber === 2) {
-// 	boxesArray[1].correct = true
-// 	answer = "box2"
-// } else if (randonNumber === 3) {
-// 	boxesArray[2].correct = true
-// 	answer = "box3"
-// } else if (randonNumber === 4) {
-// 	boxesArray[3].correct = true
-// 	answer = "box4"
-// }
-
-//Test purpose console.log 
-// console.log(boxesArray[0].correct);
-// console.log(boxesArray[1].correct);
-// console.log(boxesArray[2].correct);
-// console.log(boxesArray[3].correct);
-
-
-// This function checks the user input and reveals if the correct answer been selected or not
-// function checkGuess() {
-//     var userInput = document.getElementById("userInput").value;
-//     if (userInput === answer && boxesArray[0].correct === true) {
-//     	document.getElementById("imageBox1").src = boxesArray[0].image;
-//     	document.getElementById("textBox1").textContent = boxesArray[0].text;
-//     } else if (userInput === answer && boxesArray[1].correct === true) {
-//     	document.getElementById("imageBox2").src = boxesArray[1].image;
-//     	document.getElementById("textBox2").textContent = boxesArray[1].text;
-//     } else if (userInput === answer && boxesArray[2].correct === true) {
-//     	document.getElementById("imageBox3").src = boxesArray[2].image;
-//     	document.getElementById("textBox3").textContent = boxesArray[2].text;
-//     } else if (userInput === answer && boxesArray[3].correct === true) {
-//     	document.getElementById("imageBox4").src = boxesArray[3].image;
-//     	document.getElementById("textBox4").textContent = boxesArray[3].text;
-//     } else {
-//     	document.getElementById("imageBox1").src = boxesArray[0].imageWrong;
-//     	document.getElementById("imageBox2").src = boxesArray[1].imageWrong;
-//     	document.getElementById("imageBox3").src = boxesArray[2].imageWrong;
-//     	document.getElementById("imageBox4").src = boxesArray[3].imageWrong;
-//     	document.getElementById("textBox1").textContent = boxesArray[0].textWrong;
-//     	document.getElementById("textBox2").textContent = boxesArray[1].textWrong;
-//     	document.getElementById("textBox3").textContent = boxesArray[2].textWrong;
-//     	document.getElementById("textBox4").textContent = boxesArray[3].textWrong;
-//     }
-// }
 
 
 
