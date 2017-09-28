@@ -5,48 +5,56 @@ var imageSmile = "img/smiley-face.jpeg"
 var boxesArray = [
 	{
 		box: "box1",
+		row: 1,
 		position: true,
 		image: null,
 		boxSelect: "imageBox1"
 	},
 	{
 		box: "box2",
+		row: 1,
 		position: false,
 		image: null,
 		boxSelect: "imageBox2"
 	},
 	{
 		box: "box3",
+		row: 1,
 		position: false,
 		image: null,
 		boxSelect: "imageBox3"
 	},
 	{
 		box: "box4",
+		row: 1,
 		position: false,
 		image: null,
 		boxSelect: "imageBox4"
 	},
 	{
 		box: "box5",
+		row: 2,
 		position: false,
 		image: null,
 		boxSelect: "imageBox5"
 	},
 	{
 		box: "box6",
+		row: 2,
 		position: false,
 		image: null,
 		boxSelect: "imageBox6"
 	},
 	{
 		box: "box7",
+		row: 2,
 		position: false,
 		image: null,
 		boxSelect: "imageBox7"
 	},
 	{
 		box: "box8",
+		row: 2,
 		position: false,
 		image: null,
 		boxSelect: "imageBox8"
@@ -97,6 +105,48 @@ function moveLeft() {
 			boxesArray[i - 1].position = true;
 			// Then it changes the value in the previous object's image: property to give it an image
 			document.getElementById(boxesArray[i - 1].boxSelect).src = imageSmile;
+			// Then it changes the value to null in the current object's image property to remove the image
+			document.getElementById(boxesArray[i].boxSelect).src = null;
+			// Return prevents this process from repeating. Otherwise the image will keep moving left
+			return
+		}
+	}
+}
+
+// This function moves the image up one row
+function moveUp() {
+	// It loops through boxArray looking for the box with position true i.e. box with an image
+	for (i = 0; i < boxesArray.length; i++) {
+		// When it finds an image and it's in the bottom row
+		if (boxesArray[i].position === true && boxesArray[i].row === 2) {
+			// It sets the current object's position to false so the next loop won't place an image there
+			boxesArray[i].position = false;
+			// Then it sets position to true for object 4 back. 
+			// 4 is chosen because there are 4 boxes in the row
+			boxesArray[i - 4].position = true;
+			// Then it changes the value in the (4 back) object's image: property to give it an image
+			document.getElementById(boxesArray[i - 4].boxSelect).src = imageSmile;
+			// Then it changes the value to null in the current object's image property to remove the image
+			document.getElementById(boxesArray[i].boxSelect).src = null;
+			// Return prevents this process from repeating. Otherwise the image will keep moving left
+			return
+		}
+	}
+}
+
+// This function moves the image up one row
+function moveDown() {
+	// It loops through boxArray looking for the box with position true i.e. box with an image
+	for (i = 0; i < boxesArray.length; i++) {
+		// When it finds an image and it's in the top row
+		if (boxesArray[i].position === true && boxesArray[i].row === 1) {
+			// It sets the current object's position to false so the next loop won't place an image there
+			boxesArray[i].position = false;
+			// Then it sets position to true for object 4 forward. 
+			// 4 is chosen because there are 4 boxes in the row
+			boxesArray[i + 4].position = true;
+			// Then it changes the value in the (4 forward) object's image: property to give it an image
+			document.getElementById(boxesArray[i + 4].boxSelect).src = imageSmile;
 			// Then it changes the value to null in the current object's image property to remove the image
 			document.getElementById(boxesArray[i].boxSelect).src = null;
 			// Return prevents this process from repeating. Otherwise the image will keep moving left
