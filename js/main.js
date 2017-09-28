@@ -7,56 +7,48 @@ var boxesArray = [
 		box: "box1",
 		row: 1,
 		position: true,
-		image: null,
 		boxSelect: "imageBox1"
 	},
 	{
 		box: "box2",
 		row: 1,
 		position: false,
-		image: null,
 		boxSelect: "imageBox2"
 	},
 	{
 		box: "box3",
 		row: 1,
 		position: false,
-		image: null,
 		boxSelect: "imageBox3"
 	},
 	{
 		box: "box4",
 		row: 1,
 		position: false,
-		image: null,
 		boxSelect: "imageBox4"
 	},
 	{
 		box: "box5",
 		row: 2,
 		position: false,
-		image: null,
 		boxSelect: "imageBox5"
 	},
 	{
 		box: "box6",
 		row: 2,
 		position: false,
-		image: null,
 		boxSelect: "imageBox6"
 	},
 	{
 		box: "box7",
 		row: 2,
 		position: false,
-		image: null,
 		boxSelect: "imageBox7"
 	},
 	{
 		box: "box8",
 		row: 2,
 		position: false,
-		image: null,
 		boxSelect: "imageBox8"
 	}
 ];
@@ -83,10 +75,11 @@ function moveRight() {
 			boxesArray[i].position = false;
 			// Then it sets the next object's position to true
 			boxesArray[i + 1].position = true;
-			// Then it changes the value in the next object's image: property to give it an image
+			// boxSelect object property is used to track which HTML box should be selected
+			// Then it changes the value in the next object's boxSelect property to give it an image
 			document.getElementById(boxesArray[i + 1].boxSelect).src = imageSmile;
 			// Then it changes the value to null in the current object's image property to remove the image
-			document.getElementById(boxesArray[i].boxSelect).src = null;
+			document.getElementById(boxesArray[i].boxSelect).src = "";
 			// Return prevents this process from repeating. Otherwise the image will keep moving right
 			return
 		}
@@ -103,10 +96,11 @@ function moveLeft() {
 			boxesArray[i].position = false;
 			// Then it sets the previous object's position to true
 			boxesArray[i - 1].position = true;
-			// Then it changes the value in the previous object's image: property to give it an image
+			// boxSelect object property is used to track which HTML box should be selected
+			// Then it changes the value in the previous object's boxSelect property to give it an image
 			document.getElementById(boxesArray[i - 1].boxSelect).src = imageSmile;
 			// Then it changes the value to null in the current object's image property to remove the image
-			document.getElementById(boxesArray[i].boxSelect).src = null;
+			document.getElementById(boxesArray[i].boxSelect).src = "";
 			// Return prevents this process from repeating. Otherwise the image will keep moving left
 			return
 		}
@@ -124,10 +118,11 @@ function moveUp() {
 			// Then it sets position to true for object 4 back. 
 			// 4 is chosen because there are 4 boxes in the row
 			boxesArray[i - 4].position = true;
-			// Then it changes the value in the (4 back) object's image: property to give it an image
+			// boxSelect object property is used to track which HTML box should be selected
+			// Then it changes the value in the (4 back) object's boxSelect property to give it an image
 			document.getElementById(boxesArray[i - 4].boxSelect).src = imageSmile;
 			// Then it changes the value to null in the current object's image property to remove the image
-			document.getElementById(boxesArray[i].boxSelect).src = null;
+			document.getElementById(boxesArray[i].boxSelect).src = "";
 			// Return prevents this process from repeating. Otherwise the image will keep moving left
 			return
 		}
@@ -145,10 +140,11 @@ function moveDown() {
 			// Then it sets position to true for object 4 forward. 
 			// 4 is chosen because there are 4 boxes in the row
 			boxesArray[i + 4].position = true;
-			// Then it changes the value in the (4 forward) object's image: property to give it an image
+			// boxSelect object property is used to track which HTML box should be selected
+			// Then it changes the value in the (4 forward) object's boxSelect property to give it an image
 			document.getElementById(boxesArray[i + 4].boxSelect).src = imageSmile;
-			// Then it changes the value to null in the current object's image property to remove the image
-			document.getElementById(boxesArray[i].boxSelect).src = null;
+			// Then it changes the value to "" in order to remove the image
+			document.getElementById(boxesArray[i].boxSelect).src = "";
 			// Return prevents this process from repeating. Otherwise the image will keep moving left
 			return
 		}
