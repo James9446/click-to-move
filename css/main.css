@@ -1,6 +1,6 @@
 .box {
-	height: 300px;
-	width: 300px;
+	height: 275px;
+	/*width: 200px;*/
 	/*background-color: pink;*/
 	/*margin: 10px;*/
 }
@@ -16,4 +16,4 @@
 }
 #box4 {
 	background-color: yellow;
-}
+`
