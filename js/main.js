@@ -60,7 +60,6 @@ function start() {
 		if (boxesArray[i].position === true) {
 			// When it finds an object with position set to true it puts an image in the corresponding box
 			document.getElementById(boxesArray[i].boxSelect).src = imageSmile;
-			return
 		}
 	}
 }
@@ -70,7 +69,7 @@ function moveRight() {
 	// It loops through boxArray looking for the box with position true i.e. box with an image
 	for (i = 0; i < boxesArray.length; i++) {
 		// First conditional is for creating illusion of looping the image back through
-		// When it finds an image and it's not the bottom box all the way right
+		// When it finds an image and it is the bottom box all the way right
 		if (boxesArray[i].position === true && boxesArray[i].box === "box8") {
 			// It sets the current object's position to false so the next loop won't place an image there
 			boxesArray[i].position = false;
@@ -104,7 +103,7 @@ function moveLeft() {
 	// It loops through boxArray looking for the box with position true i.e. box with an image
 	for (i = 0; i < boxesArray.length; i++) {
 		// First conditional is for creating illusion of looping the image back through
-		// When it finds an image and it's not the top box all the way left
+		// When it finds an image and it is the top box all the way left
 		if (boxesArray[i].position === true && boxesArray[i].box === "box1") {
 			// It sets the current object's position to false so the next loop won't place an image there
 			boxesArray[i].position = false;
