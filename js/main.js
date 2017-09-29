@@ -69,8 +69,21 @@ function start() {
 function moveRight() {
 	// It loops through boxArray looking for the box with position true i.e. box with an image
 	for (i = 0; i < boxesArray.length; i++) {
+		// First conditional is for creating illusion of looping the image back through
 		// When it finds an image and it's not the bottom box all the way right
-		if (boxesArray[i].position === true && boxesArray[i].box !== "box8") {
+		if (boxesArray[i].position === true && boxesArray[i].box === "box8") {
+			// It sets the current object's position to false so the next loop won't place an image there
+			boxesArray[i].position = false;
+			// Then it sets the first object's position to true so the image will appear to loop back to the start
+			boxesArray[i - 7].position = true;
+			// boxSelect object property is used to track which HTML box should be selected
+			// Then it changes the value in the first object's boxSelect property to give it an image
+			document.getElementById(boxesArray[i - 7].boxSelect).src = imageSmile;
+			// Then it changes the value to null in the current object's image property to remove the image
+			document.getElementById(boxesArray[i].boxSelect).src = "";
+			// Return prevents this process from repeating. Otherwise the image will keep moving right
+			return
+		} else if (boxesArray[i].position === true) {
 			// It sets the current object's position to false so the next loop won't place an image there
 			boxesArray[i].position = false;
 			// Then it sets the next object's position to true
@@ -90,8 +103,21 @@ function moveRight() {
 function moveLeft() {
 	// It loops through boxArray looking for the box with position true i.e. box with an image
 	for (i = 0; i < boxesArray.length; i++) {
+		// First conditional is for creating illusion of looping the image back through
 		// When it finds an image and it's not the top box all the way left
-		if (boxesArray[i].position === true && boxesArray[i].box !== "box1") {
+		if (boxesArray[i].position === true && boxesArray[i].box === "box1") {
+			// It sets the current object's position to false so the next loop won't place an image there
+			boxesArray[i].position = false;
+			// Then it sets the last object's position to true so the image will appear to loop back to the end
+			boxesArray[i + 7].position = true;
+			// boxSelect object property is used to track which HTML box should be selected
+			// Then it changes the value in the last object's boxSelect property to give it an image
+			document.getElementById(boxesArray[i + 7].boxSelect).src = imageSmile;
+			// Then it changes the value to null in the current object's image property to remove the image
+			document.getElementById(boxesArray[i].boxSelect).src = "";
+			// Return prevents this process from repeating. Otherwise the image will keep moving left
+			return
+		} else if (boxesArray[i].position === true) {
 			// It sets the current object's position to false so the next loop won't place an image there
 			boxesArray[i].position = false;
 			// Then it sets the previous object's position to true
